@@ -99,7 +99,7 @@ resource "aws_security_group" "K8s_sg" {
 
 # Elastic IP
 resource "aws_eip" "static_eip" {
-  instance = aws_instance.Web_VM.id
+  instance = aws_instance.K8s_VM.id
   tags = merge(local.default_tags,
     {
       "Name" = "${local.name_prefix}-eip"
