@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql-sports-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysql-sports
+  template:
+    metadata:
+      labels:
+        app: mysql-sports
+    spec:
+      containers:
+      - name: mysql
+        image: 396561719560.dkr.ecr.us-east-1.amazonaws.com\mysql-image:latest 
+        ports:
+        - containerPort: 3306
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: "MVSOrtiz2025." 
+        - name: MYSQL_DATABASE
+          value: "sportsdb"

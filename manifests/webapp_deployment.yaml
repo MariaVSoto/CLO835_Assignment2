@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sports-app-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: sports-app 
+  template:
+    metadata:
+      labels:
+        app: sports-app 
+    spec:
+      containers:
+      - name: webapp
+        image: 396561719560.dkr.ecr.us-east-1.amazonaws.com\webapp-image:v1-sports
+        ports:
+        - containerPort: 8080
+        env:
+        - name: DB_HOST
+          value: "mysql-sports-service" 
+        - name: DB_USER
+          value: "root"
+        - name: DB_PASSWORD
+          value: "MVSOrtiz2025."
+        - name: DB_NAME
+          value: "sportsdb" 
