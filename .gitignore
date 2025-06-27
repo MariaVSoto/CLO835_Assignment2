@@ -10,6 +10,9 @@
 crash.log
 crash.*.log
 
+# Ignore Node.js dependencies folder
+node_modules
+
 # Ignore override files as they are usually used for local dev
 override.tf
 override.tf.json

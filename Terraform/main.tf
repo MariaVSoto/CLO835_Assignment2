@@ -53,6 +53,9 @@ resource "aws_instance" "K8s_VM" {
 
   user_data                   = file("install-tools.sh")
 
+  root_block_device {
+    volume_size = 15 # The size of the volume in gigabytes (GiB).
+  }
 
   tags = merge(local.default_tags,
     {
@@ -111,13 +114,13 @@ resource "aws_eip" "static_eip" {
 # Amazon ECR Container Registry for the web application
 
 resource "aws_ecr_repository" "webapp" {
-  name = "my-webapp-image"
+  name = "webapp-image"
 
 tags = local.default_tags
 }
 
 resource "aws_ecr_repository" "mysql" {
-  name = "my-mysql-image"
+  name = "mysql-image"
 
 tags = local.default_tags
 }
