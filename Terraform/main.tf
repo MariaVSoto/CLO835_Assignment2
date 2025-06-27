@@ -54,7 +54,7 @@ resource "aws_instance" "K8s_VM" {
   user_data                   = file("install-tools.sh")
 
   root_block_device {
-    volume_size = 15 # The size of the volume in gigabytes (GiB).
+    volume_size = 20 # The size of the volume in gigabytes (GiB).
   }
 
   tags = merge(local.default_tags,
