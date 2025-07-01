@@ -1,20 +1,20 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: Deployment               # <----- Deployment manifiest for MySQL
 metadata:
   name: mysql-sports-deployment
 spec:
-  replicas: 1
+  replicas: 1                  # <----- Replicaset for MySQL deployment
   selector:
     matchLabels:
       app: mysql-sports
-  template:
+  template:                    # <----- Pod Manifest for MySQL
     metadata:
       labels:
         app: mysql-sports
     spec:
       containers:
       - name: mysql
-        image: 396561719560.dkr.ecr.us-east-1.amazonaws.com\mysql-image:latest 
+        image: 396561719560.dkr.ecr.us-east-1.amazonaws.com/mysql-image:latest 
         ports:
         - containerPort: 3306
         env:
