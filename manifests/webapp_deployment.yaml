@@ -1,22 +1,23 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: Deployment                   # <----- Deployment manifiest for webapp
 metadata:
   name: webs-sportapp-deployment
 spec:
-  replicas: 3
+  replicas: 3                     # <----- Replicaset for webapp deployment
   selector:
     matchLabels:
       app: sports-app 
-  template:
+  template:                       # <----- Pod Manifest for webapp
     metadata:
       labels:
         app: sports-app 
     spec:
       containers:
       - name: webapp
-        image: 396561719560.dkr.ecr.us-east-1.amazonaws.com\webapp-image:v1-sports
+        image: 396561719560.dkr.ecr.us-east-1.amazonaws.com/webapp-image:v1-sports
         ports:
         - containerPort: 8080
+          protocol: TCP
         env:
         - name: DB_HOST
           value: "mysql-sports-service" 

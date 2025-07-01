@@ -17,12 +17,12 @@ usermod -aG docker ec2-user
 
 # --- Install kubectl ---
 echo "Installing kubectl..."
-curl -o /usr/local/bin/kubectl https://s3.us-west-2.amazonaws.com/amazon-eks/1.28.5/2024-01-04/bin/linux/amd64/kubectl
+curl -LO /usr/local/bin/kubectl https://dl.k8s.io/release/v1.29.13/bin/linux/amd64/kubectl
 chmod +x /usr/local/bin/kubectl
 
 # --- Install kind ---
 echo "Installing kind..."
-curl -Lo /usr/local/bin/kind https://kind.sigs.k8s.io/dl/v0.20.0/kind-linux-amd64
+curl -sLo /usr/local/bin/kind https://kind.sigs.k8s.io/dl/v0.20.0/kind-linux-amd64
 chmod +x /usr/local/bin/kind
 
 # --- Configure ECR Credential Helper ---
