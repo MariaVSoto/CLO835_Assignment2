@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment               # <----- Deployment manifiest for MySQL
+metadata:
+  name: mysql-deployment
+  namespace: mysql-ns
+  labels:
+    app: mysql
+spec:
+  replicas: 3                  # <----- Replicaset for MySQL deployment
+  selector:
+    matchLabels:
+      app: mysql
+  template:                    # <----- Pod Manifest for MySQL
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      containers:
+      - name: mysql
+        image: 396561719560.dkr.ecr.us-east-1.amazonaws.com/mysql-image:latest 
+        ports:
+        - containerPort: 3306
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: "password" 

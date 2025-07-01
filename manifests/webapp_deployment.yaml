@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment                   # <----- Deployment manifiest for webapp
+metadata:
+  name: websapp-deployment
+  namespace: webapp-ns
+spec:
+  replicas: 3                     # <----- Replicaset for webapp deployment
+  selector:
+    matchLabels:
+      app: employees 
+  template:                       # <----- Pod Manifest for webapp
+    metadata:
+      labels:
+        app: employees 
+    spec:
+      containers:
+      - name: webapp
+        image: 396561719560.dkr.ecr.us-east-1.amazonaws.com/webapp-image:v1
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        env:
+        - name: DB_HOST
+          value: "mysql-service.mysql-ns.svc.cluster.local" 
+        - name: DB_PWD
+          value: "password"
+        - name: DB_USER
+          value: "root"
+        - name: DB_DATABASE
+          value: "employees"
+        - name: DB_PORT
+          value: "3306"
+        - name: DATABASE
+          value: "employees"
+ 
