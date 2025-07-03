@@ -4,7 +4,7 @@ metadata:
   name: mysql-rs
   namespace: mysql-ns
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: mysql
@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: mysql
-        image: image: 396561719560.dkr.ecr.us-east-1.amazonaws.com/mysql-image:latest
+        image: 396561719560.dkr.ecr.us-east-1.amazonaws.com/mysql-image:latest
         ports:
         - containerPort: 3306
         env:
