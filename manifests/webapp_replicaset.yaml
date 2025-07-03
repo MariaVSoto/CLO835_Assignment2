@@ -13,6 +13,8 @@ spec:
       labels:
         app: employees 
     spec:
+      imagePullSecrets:
+      - name: ecr-registry-secret
       containers:
       - name: webapp
         image: 396561719560.dkr.ecr.us-east-1.amazonaws.com/webapp-image:v1
