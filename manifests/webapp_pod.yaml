@@ -16,7 +16,7 @@ spec:
     - name: DBPWD
       value: "password"
     - name: DBHOST 
-      value: "IPAddressofMySQLPod"  
+      value: "mysql-service.mysql-ns.svc.cluster.local"  
     - name: DBUSER
       value: "root"
     - name: DBPORT
